@@ -1,0 +1,84 @@
+<?php
+    /* $nombre = $_POST["nombre"];
+    $contrasena = $_POST["contrasena"];
+
+    if ($nombre == "juliana"){
+        echo "Inicio de sesión exitoso";
+    }else{
+        echo "Inicio de sesión Invalido";
+    } */
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+    $host = "127.0.0.1:3307";
+    $port = "";
+    $user = "root";
+    $password = "";
+    $database = "gestion_tutorias";
+    $motordb = "mysql"; 
+
+
+    try{
+        $dsn = "$motordb:host=$host;port=$port;dbname=$database;charset=utf8mb4";
+        $conexion = new PDO($dsn, $user, $password,[
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,          // Lanzar excepciones en errores
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC      // Retornar resultados como arrays asociativos
+        ]);
+
+        echo "CONECTADO CON EXITO";
+
+    }catch(PDOException $e){
+
+        die ("Hubo un error para conectar con la base de datos". $e->getMessage());
+    }
+
+$accion = $_GET['accion'] ?? '';
+
+if($accion === 'crear'){
+    
+    $numId = NULL;
+    $nameUser = $_POST["nameUser"]; 
+    $lastnameUser = $_POST["lastnameUser"];
+    $phone = NULL;
+    $address = NULL;
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $age = NULL;
+    $idVerification = "";
+    $idArea = NULL;
+    $rol = $_POST["rol"];
+    $foto = NULL;
+
+    if($rol === "1"){
+        $sql = "INSERT INTO estudiante (
+            num_identificacion, nombre, apellido, telefono, direccion,
+            correo_electronico, contrasena, verificacion_edad,
+            idVerificacion, idArea, idRol, foto
+        ) VALUES (
+            NULL, '$nameUser', '$lastnameUser', NULL, NULL,
+            '$email', '$password', NULL,
+            NULL, NULL, $rol, NULL
+        )";
+
+        $resultado = $conexion->exec($sql);
+        if($resultado !== false){
+            echo "Cliente creado exitosamente";
+        } else {
+            echo "Error al insertar en estudiante";
+        }
+    } elseif($rol === "2"){
+        $sql = "INSERT INTO tutor(nombre,apellido,correo_electronico,contrasena,idRol)
+                VALUES ('$nameUser','$lastnameUser','$email','$password','$rol')";
+
+        $resultado = $conexion->exec($sql);
+        if($resultado !== false){
+            echo "Cliente creado exitosamente";
+        } else {
+            echo "Error al insertar en tutor";
+        }
+    } else {
+        echo "No se pudo agregar"; 
+    }
+}
+?>

@@ -1,0 +1,74 @@
+/* --- RESET BÁSICO --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: sans-serif;
+    line-height: 1.5;
+    background-color: #fff;
+    color: #000;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+/* --- RESET BÁSICO --- */
+
+#main_container{
+    background-color: #E2E2E2;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#img-main {
+    height: 100vh;         
+    width: auto;           
+    object-fit: cover;     
+    display: block;        
+}
+
+#schedule-session {
+    width: 100%; /* o 100% con max-width */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.schedule-session-2 {
+    width: 50%;
+}
+
+#title-login {
+    margin: 0 0 45px 0;
+}
+
+.credentials-login{
+    display: flex;
+    flex-direction: column;
+}
+
+
