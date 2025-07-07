@@ -26,7 +26,7 @@ error_reporting(E_ALL);
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC      // Retornar resultados como arrays asociativos
         ]);
 
-        echo "CONECTADO CON EXITO";
+        
 
     }catch(PDOException $e){
 
@@ -63,9 +63,11 @@ if($accion === 'crear'){
 
         $resultado = $conexion->exec($sql);
         if($resultado !== false){
-            echo "Cliente creado exitosamente";
+            header("Location: ../views/registro.html?exito=1");
+            exit();
         } else {
-            echo "Error al insertar en estudiante";
+            header("Location: ../views/registro.html?error=1");
+            exit();
         }
     } elseif($rol === "2"){
         $sql = "INSERT INTO tutor(nombre,apellido,correo_electronico,contrasena,idRol)

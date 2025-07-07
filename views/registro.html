@@ -4,50 +4,116 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro</title>
+    <!-- Bootstrap CSS -->
     <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous"
     />
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <!-- CSS personal -->
     <link rel="stylesheet" href="../assets/css/general.css">
+</head>
 </head>
 <body>
     <div id="main_container">
         <img src="../assets/img/img_registro.png" alt="imagen_inicio_sesion" id="img-main">
         <form action="../backend/conexion.php?accion=crear" method="post" id="schedule-session">
-            <h1>Comienza tu registro</h1>
+            <h1 id="title-login">Comienza tu registro</h1>
 
             <label for="" class="form-label">Nombres:</label>
-            <input class="form-control schedule-session-2" type="text"placeholder="Ingresa tu nombre" name="nameUser"/>
+            <input class="form-control schedule-session-2" type="text"placeholder="Ingresa tu nombre" name="nameUser" required/>
 
             <label for="" class="form-label">Apellidos:</label>
-            <input class="form-control" type="text" placeholder="Ingresa tu apellido" name="lastnameUser"/>
+            <input class="form-control schedule-session-2" type="text" placeholder="Ingresa tu apellido" name="lastnameUser" required/>
 
             <label for="" class="form-label">Correo Electrónico:</label>
-            <input class="form-control" type="email" placeholder="Ingresa tu correo" name="email"/>
+            <input class="form-control schedule-session-2" type="email" placeholder="Ingresa tu correo" name="email" required/>
 
-            <label for="" class="form-label">Contraseña:</label>
-            <input class="form-control" type="password" placeholder="Ingresa tu contraseña" name="password"/>
+            <!-- <label for="" class="form-label">Contraseña:</label>
+            <input class="form-control schedule-session-2" type="password" placeholder="Ingresa tu contraseña" name="password" id="password" required/>
 
             <label for="" class="form-label">Confirmar contraseña:</label>
-            <input class="form-control" type="password" placeholder="Ingresa nuevamente tu contraseña" name=""/>
+            <input class="form-control schedule-session-2" type="password" placeholder="Ingresa nuevamente tu contraseña" name="" id="confirmPassword" required/> -->
+
+            <label for="password" class="form-label">Contraseña:</label>
+            <div class="input-group schedule-session-2">
+                <input class="form-control" type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required />
+                <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password">
+                    <i class="bi bi-eye-slash-fill"></i>
+                </button>
+            </div>
+
+            <label for="confirmPassword" class="form-label">Confirmar contraseña:</label>
+            <div class="input-group schedule-session-2">
+                <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" placeholder="Ingresa nuevamente tu contraseña" required />
+                <button class="btn btn-outline-secondary toggle-password" type="button" data-target="confirmPassword">
+                    <i class="bi bi-eye-slash-fill"></i>
+                </button>
+            </div>
 
             <label for="" class="form-label">Eres un:</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="rol" id="flexRadioDefault1" value="1"/>
+                <input class="form-check-input" type="radio" name="rol" id="flexRadioDefault1" value="1" required/>
                 <label class="form-check-label" for="flexRadioDefault1">Estudiante</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="rol" id="flexRadioDefault2" value="2" checked/>
+                <input class="form-check-input" type="radio" name="rol" id="flexRadioDefault2" value="2"/>
                 <label class="form-check-label" for="flexRadioDefault2">Tutor</label>
             </div>
 
             <div class="botones">
-                <button href="../backend/conexion.php" class="btn btn-outline-primary button-main"
+                <button type="submit" class="btn btn-outline-primary button-main"
                 >Registrar</button>
             </div>
         </form>
     </div>
+
+    <!-- Modal de éxito -->
+    <div class="modal fade" id="registroExitosoModal" tabindex="-1" aria-labelledby="modalTitulo" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitulo">Registro Exitoso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Tu cuenta ha sido registrada exitosamente.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='login.html'">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de error -->
+    <div class="modal fade" id="registroFallidoModal" tabindex="-1" aria-labelledby="modalErrorTitulo" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="modalErrorTitulo">Error en el Registro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p>No se pudo completar el registro. Por favor, intenta nuevamente.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="window.location.href='registro.html'">Intentar de nuevo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Enlace de registro.html con Bootstrap JS   -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!--Enlace de registro.html con registro.js  -->
+    <script src="../assets/js/registro.js"></script>
+
 </body>
 </html>

@@ -26,7 +26,7 @@ input, button, textarea, select {
 }
 
 a {
-    text-decoration: none;
+    /* text-decoration: none; */
     color: inherit;
 }
 
@@ -50,6 +50,16 @@ ul, ol {
     display: block;        
 }
 
+.old_password {
+    color: #0000FF;
+    padding: 5px 0 20px 0px;
+}
+
+#title-login {
+    margin: 0 0 45px 0;
+    font-weight: 900;
+}
+
 #schedule-session {
     width: 100%; /* o 100% con max-width */
     display: flex;
@@ -58,17 +68,36 @@ ul, ol {
     justify-content: center;
 }
 
+.form-label {
+    width: 50%;
+    text-align: left;
+    margin-top: 5px;
+    font-weight: 600;
+    /* display: flex;
+    justify-content: flex-start; */
+}
+
 .schedule-session-2 {
     width: 50%;
 }
 
-#title-login {
-    margin: 0 0 45px 0;
+.form-check{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.form-check-label {
+    margin-left: 10px;
 }
 
 .credentials-login{
+    padding: 10px 0;
     display: flex;
     flex-direction: column;
 }
+
+
 
 
