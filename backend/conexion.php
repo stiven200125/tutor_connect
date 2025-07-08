@@ -11,7 +11,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-    $host = "127.0.0.1:3307";
+    $host = "localhost";
     $port = "";
     $user = "root";
     $password = "";
@@ -45,10 +45,13 @@ if($accion === 'crear'){
     $email = $_POST["email"];
     $password = $_POST["password"];
     $age = NULL;
-    $idVerification = "";
+    $idVerification = NULL;
     $idArea = NULL;
+    $idMetodologia = NULL;
     $rol = $_POST["rol"];
     $foto = NULL;
+    $description = NULL;
+    $price = NULL;
 
     if($rol === "1"){
         $sql = "INSERT INTO estudiante (
@@ -70,14 +73,24 @@ if($accion === 'crear'){
             exit();
         }
     } elseif($rol === "2"){
-        $sql = "INSERT INTO tutor(nombre,apellido,correo_electronico,contrasena,idRol)
-                VALUES ('$nameUser','$lastnameUser','$email','$password','$rol')";
+        $sql = "INSERT INTO tutor(
+            idVerificacion, idArea, idRol, idMetodologia,
+            nombre, apellido, foto, telefono, descripcion, direccion,
+            correo_electronico, contrasena, precio, verificacion_edad,
+            num_identificacion	
+        )VALUES 
+            (NULL, NULL, '$rol', NULL, '$nameUser', '$lastnameUser', NULL, 
+            NULL, NULL, NULL, '$email' ,'$password' ,NULL ,NULL ,NULL 
+        )";
 
         $resultado = $conexion->exec($sql);
         if($resultado !== false){
-            echo "Cliente creado exitosamente";
+            header("Location: ../views/registro.html?exito=1");
+            exit();
+            
         } else {
-            echo "Error al insertar en tutor";
+            header("Location: ../views/registro.html?error=1");
+            exit();
         }
     } else {
         echo "No se pudo agregar"; 
