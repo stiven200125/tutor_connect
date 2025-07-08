@@ -96,8 +96,20 @@ ul, ol {
     padding: 10px 0;
     display: flex;
     flex-direction: column;
+    width: 40%;
 }
 
+#password-login {
+    display: flex;
+    width: 100%;
+
+}
+
+#botons {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+}
 
 
 
