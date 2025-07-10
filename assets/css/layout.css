@@ -1,15 +1,72 @@
+/* Style header */
+
 #header-container {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: auto;
+}
+
+#header-component {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#right-block {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#block-name-user {
+    display: flex;
+    flex-direction: column;
+}
+
+#name-user {
+    font-size: 1.2em;
+    color: #000000;
+    font-weight: bold;
+}
+
+#type-roll {
+    font-size: 0.9em;
     text-align: center;
 }
 
+#logo-profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Style footer */
+
 #footer-container {
+    background-color: #0400C1;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+    height: auto;
     text-align: center;
+}
+
+#footer-component {
+    color: white;
+}
+
+#text-footer p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+#social-media {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }

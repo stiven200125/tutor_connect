@@ -24,18 +24,18 @@
     <main>
         <div id="main_container">
             <img src="../assets/img/img_registro.png" alt="imagen_inicio_sesion" id="img-main">
-            <form action="#" method="post" id="schedule-session">
+            <form action="../backend/routes/login.php" method="post" id="schedule-session">
                 <h1 id="title-login">Inicio de sesión</h1>
                 
                 <div id="email-login" class="credentials-login">
                 <label class="form-label-2" for="email">Correo electrónico:</label>
-                <input class="form-control" type="email" id="email" name="email" placeholder="Ingresa tu correo" required>
+                <input class="form-control" type="email" id="email" placeholder="Ingresa tu correo" name="correo" required>
                 </div>
 
                 <div class="credentials-login">
                     <label class="form-label-2" for="password">Contraseña:</label>
                     <div id="password-login">
-                        <input class="form-control" type="password" id="password" name="password" placeholder="Ingresa tu contraseña " required>
+                        <input class="form-control" type="password" id="password" placeholder="Ingresa tu contraseña " name="contrasena" required>
                         <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password">
                             <i class="bi bi-eye-slash-fill"></i>
                         </button>
@@ -45,7 +45,7 @@
                 <a class="old_password" href="https://about:blank">Olvidaste la contraseña</a>
 
                 <div id="botons">
-                    <a class="btn btn-outline-primary button-main" href="index.html" id="boton_index">Ingresar</a>
+                    <button class="btn btn-outline-primary button-main" href="../backend/controllers/loginController.php" id="boton_index">Ingresar</button>
                     <a class="btn btn-outline-primary button-main" href="registro.html" id="boton_registro">Registrarse</a>
                 </div>
             </form>
