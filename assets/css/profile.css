@@ -1,5 +1,12 @@
+#main-content {
+    min-height: calc(100vh - 92.8px);
+    background-color: blue;
+}
+
+#main-content-profile {
+    background-color: gray;
+}
+
 #title {
-    height: 100vh;
-    display: flex;
-    align-items: center;
+    text-align: center;
 }
