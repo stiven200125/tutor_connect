@@ -1,10 +1,11 @@
 #main-content {
     min-height: calc(100vh - 92.8px);
-    background-color: blue;
+    background-color: #E2E2E2;
 }
 
 #main-content-profile {
-    background-color: gray;
+    background-color: #FFFFFF;
+    
 }
 
 #title {
