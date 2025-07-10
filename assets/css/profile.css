@@ -1,13 +1,36 @@
 #main-content {
     min-height: calc(100vh - 92.8px);
     background-color: #E2E2E2;
+    display: flex;
+    justify-content: center;
+    
 }
 
 #main-content-profile {
     background-color: #FFFFFF;
-    
+    width: 95%;
+    min-height: calc(80vh - 120px);
 }
 
-#title {
-    text-align: center;
+#profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 20px 0;
+}
+
+#profile-content-form {
+    display: flex;
+    justify-content: space-around;
+}
+
+#profile-picture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 0 10%;
+}
+
+#profile-info-container-part-two {
+    padding: 0 10% 0 0;
 }
