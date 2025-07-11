@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../controllers/RegistroController.php';
-require_once __DIR__ . '/../controllers/PerfilController.php';
+require_once __DIR__ . '/../controllers/registroController.php';
+require_once __DIR__ . '/../controllers/profileController.php';
 
 $accion = $_GET['accion'] ?? '';
 
@@ -15,9 +15,13 @@ switch ($accion) {
         exit();
 
     case 'editar':
-        $exito = PerfilController::editar($_POST);
-        echo $exito ? "Edición exitosa" : "Error al editar";
-        break;
+    $exito = PerfilController::editar($_POST);
+    if ($exito) {
+        header("Location: ../../views/studentProfile.html?exito=1");
+    } else {
+        header("Location: ../../views/studentProfile.html?error=1");
+    }
+    break;
 
     case 'eliminar':
         $id = $_POST['id'];

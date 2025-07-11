@@ -37,8 +37,3 @@
     align-items: center;
     justify-content: center;
 }
-
-#profile-info-container-part-two {
-    display: flex;
-    justify-content: flex-start;
-}
