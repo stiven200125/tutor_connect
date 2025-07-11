@@ -1,5 +1,5 @@
 /* Style header */
-
+    
 #header-container {
     top: 0;
     left: 0;
@@ -61,10 +61,7 @@
 }
 
 #text-footer p {
-    font-size: 0.8rem;    
-}
-
-p {
+    font-size: 0.8rem;
     margin-bottom: auto;
 }
 
