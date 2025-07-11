@@ -9,10 +9,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
             // Llenar los campos del formulario con los datos del perfil
-            document.querySelector('input[name="nombre"]').value = data.nombre;
-            document.querySelector('input[name="apellido"]').value = data.apellido;
-            document.getElementById("user-id").value = data.id;
-            document.getElementById("user-rol").value = data.rol;
+            if (data.rol === 1) {
+                document.querySelector('input[name="nombre"]').value = data.nombre || '';
+                document.querySelector('input[name="apellido"]').value = data.apellido || '';
+                document.querySelector('input[name="direccion"]').value = data.direccion || '';
+                document.querySelector('input[name="telefono"]').value = data.telefono || '';
+                document.querySelector('input[name="correo"]').value = data.correo_electronico || '';
+                document.querySelector('input[name="area"]').value = data.idArea || '';
+                document.getElementById("user-id").value = data.id || '';
+                document.getElementById("user-rol").value = data.rol || '';
+            } else if (data.rol === 2) {
+                document.querySelector('input[name="nombre"]').value = data.nombre || '';
+                document.querySelector('input[name="apellido"]').value = data.apellido || '';
+                document.querySelector('input[name="direccion"]').value = data.direccion || '';
+                document.querySelector('input[name="telefono"]').value = data.telefono || '';
+                document.querySelector('input[name="correo"]').value = data.correo_electronico || '';
+                document.querySelector('input[name="area"]').value = data.idArea || '';
+                document.getElementById("user-id").value = data.id || '';
+                document.getElementById("user-rol").value = data.rol || '';
+            }
 
             // Habilitar el botón después de llenar los campos
             document.querySelector("button[type='submit']").disabled = false;

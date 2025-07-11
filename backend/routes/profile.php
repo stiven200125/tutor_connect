@@ -18,6 +18,10 @@ if ($usuario) {
         "id" => $id,
         "nombre" => $usuario['nombre'],
         "apellido" => $usuario['apellido'],
+        "direccion" => $usuario['direccion'],
+        "telefono" => $usuario['telefono'],
+        "correo_electronico" => $usuario['correo_electronico'],
+        "idArea" => $usuario['idArea'],
         "rol" => $rol
     ]);
 } else {
