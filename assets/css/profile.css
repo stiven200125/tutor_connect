@@ -24,6 +24,8 @@
 
 #profile-content-form {
     height: 80%;
+    display: flex;
+    justify-content: space-around;
 }
 
 #profile-content-form {
