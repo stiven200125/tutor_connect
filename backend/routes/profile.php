@@ -1,0 +1,23 @@
+<?php
+session_start();
+require_once __DIR__ . '/../controllers/profileController.php';
+
+if (!isset($_SESSION['id']) || !isset($_SESSION['rol'])) {
+    echo json_encode(["error" => "No autenticado"]);
+    exit();
+}
+
+$id = $_SESSION['id'];
+$rol = $_SESSION['rol'];
+
+$usuario = PerfilController::obtenerPerfil($id, $rol);
+
+if ($usuario) {
+    echo json_encode([
+        "nombre" => $usuario['nombre'],
+        "apellido" => $usuario['apellido'],
+        "rol" => $rol
+    ]);
+} else {
+    echo json_encode(["error" => "Usuario no encontrado"]);
+}
