@@ -15,13 +15,13 @@ switch ($accion) {
         exit();
 
     case 'editar':
-    $exito = PerfilController::editar($_POST);
-    if ($exito) {
-        header("Location: ../../views/studentProfile.html?exito=1");
-    } else {
-        header("Location: ../../views/studentProfile.html?error=1");
-    }
-    break;
+        $exito = PerfilController::editar($_POST);
+        if ($exito) {
+            header("Location: ../../views/studentProfile.html?exito=1");
+        } else {
+            header("Location: ../../views/studentProfile.html?error=1");
+        }
+        break;
 
     case 'eliminar':
         $id = $_POST['id'];
