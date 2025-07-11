@@ -14,7 +14,7 @@ if ($estudiante) {
     $_SESSION['id'] = $estudiante['idEstudiante'];
     $_SESSION['rol'] = 1;
     $_SESSION['nombre'] = $estudiante['nombre'];
-    echo "Login exitoso como estudiante";
+    header("Location: ../../views/studentProfile.html");
     exit();
 }
 
