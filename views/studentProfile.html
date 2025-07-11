@@ -36,37 +36,40 @@
             <form action="../backend/routes/index.php?accion=editar" method="POST">
                 <div id="profile-content-form">
                     <div id="profile-picture-container">
-                        <img src="../assets/img/img-profile-tutor.png" alt="profile picture" id="profile-picture">
+                        <img src="../assets/img/img-profile-tutor-two.png" alt="profile picture" id="profile-picture">
                         <input type="file" id="profile-picture-input" accept="image/*">
                     </div>
-                    
+                    <div id="profile-info-container">
+                        <div id="profile-info-container-part-one">
+                            <label for="">Nombres:</label>
+                            <input type="text" class="form-control" name="nombre" required>
+                            
+                            <label for="">Apellidos:</label>
+                            <input type="text" class="form-control" name="apellido" required>
+                            
+                            <label for="">Dirección:</label>
+                            <input type="text" class="form-control" name="direccion" required>
+                        </div>
+                        <div id="profile-info-container-part-one">
+                            <label for="">Área:</label>
+                            <input type="text" class="form-control" name="area" required>
+                            <!-- <select class="form-select" name="area" required>
+                                <option value="1">Matemáticas</option>
+                            </select> -->
+                            
+                            <label for="">Correo Electrónico:</label>
+                            <input type="email" class="form-control" name="correo" disabled>
+                            
+                            <label for="">Teléfono:</label>
+                            <input type="tel" class="form-control" name="telefono" required>
+                        </div>
+                    </div>
                     <input type="hidden" name="id" id="user-id">
                     <input type="hidden" name="rol" id="user-rol">
-
-                    <div id="profile-info-container-part-one">
-                        <label for="">Nombres:</label>
-                        <input type="text" class="form-control" name="nombre" required>
-
-                        <label for="">Apellidos:</label>
-                        <input type="text" class="form-control" name="apellido" required>
-
-                        <label for="">Dirección:</label>
-                        <input type="text" class="form-control" name="direccion" required>
-                    </div>
-                    <div id="profile-info-container-part-two">
-                        <label for="">Área:</label>
-                        <input type="text" class="form-control" name="area" required>
-
-                        <label for="">Correo Electrónico:</label>
-                        <input type="email" class="form-control" name="correo" required>
-
-                        <label for="">Teléfono:</label>
-                        <input type="tel" class="form-control" name="telefono" required>
-                    </div>
                 </div>
                 <div id="profile-buttons">
-                    <button type="submit" id="btn-actualizar" disabled>Actualizar</button>
-                    <button type="submit">Eliminar Cuenta</button>
+                    <button class="btn btn-outline-primary button-main" type="submit" id="btn-update" disabled>Actualizar</button>
+                    <button class="btn btn-outline-danger" type="submit" id="btn-delete-account">Eliminar Cuenta</button>
                 </div>
             </form>
         </div>
