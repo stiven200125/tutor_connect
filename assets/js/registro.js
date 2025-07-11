@@ -41,3 +41,4 @@ if (params.get("error") === "1") {
     const errorModal = new bootstrap.Modal(document.getElementById('registroFallidoModal'));
     errorModal.show();
 }
+

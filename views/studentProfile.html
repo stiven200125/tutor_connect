@@ -33,35 +33,39 @@
                 <img src="../assets/img/logo-my-profile.png" alt="logo mi perfil" id="profile-logo">
                 <h1 id="profile-title">Mi Perfil</h1>
             </div>
-            <form action="">
+            <form action="../backend/routes/index.php?accion=editar" method="POST">
                 <div id="profile-content-form">
                     <div id="profile-picture-container">
                         <img src="../assets/img/img-profile-tutor.png" alt="profile picture" id="profile-picture">
                         <input type="file" id="profile-picture-input" accept="image/*">
                     </div>
+                    
+                    <input type="hidden" name="id" id="user-id">
+                    <input type="hidden" name="rol" id="user-rol">
+
                     <div id="profile-info-container-part-one">
                         <label for="">Nombres:</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="nombre" required>
 
                         <label for="">Apellidos:</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="apellido" required>
 
                         <label for="">Dirección:</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="direccion" required>
                     </div>
                     <div id="profile-info-container-part-two">
                         <label for="">Área:</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="area" required>
 
                         <label for="">Correo Electrónico:</label>
-                        <input type="email" class="form-control" required>
+                        <input type="email" class="form-control" name="correo" required>
 
                         <label for="">Teléfono:</label>
-                        <input type="tel" class="form-control" required>
+                        <input type="tel" class="form-control" name="telefono" required>
                     </div>
                 </div>
                 <div id="profile-buttons">
-                    <button type="submit">Actualizar</button>
+                    <button type="submit" id="btn-actualizar" disabled>Actualizar</button>
                     <button type="submit">Eliminar Cuenta</button>
                 </div>
             </form>
@@ -77,6 +81,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Enlace de componente header-footer.js -->
     <script src="../assets/js/incluir-header-footer.js"></script>
-    
+    <!-- Enlace de componente profile.js -->
+    <script src="../assets/js/profile.js"></script>
 </body>
 </html>

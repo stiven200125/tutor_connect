@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_log("SESSION: " . print_r($_SESSION, true));
 require_once __DIR__ . '/../controllers/profileController.php';
 
 if (!isset($_SESSION['id']) || !isset($_SESSION['rol'])) {
@@ -14,6 +15,7 @@ $usuario = PerfilController::obtenerPerfil($id, $rol);
 
 if ($usuario) {
     echo json_encode([
+        "id" => $id,
         "nombre" => $usuario['nombre'],
         "apellido" => $usuario['apellido'],
         "rol" => $rol
