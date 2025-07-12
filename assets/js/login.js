@@ -16,3 +16,11 @@ document.querySelectorAll('.toggle-password').forEach(btn => {
         }
     });
 });
+
+// Mostrar modales según el parámetro en la URL (?exito=1 o ?error=1)
+const params = new URLSearchParams(window.location.search);
+
+if (params.get("error") === "1") {
+    const errorModal = new bootstrap.Modal(document.getElementById('loginFallidoModal'));
+    errorModal.show();
+}

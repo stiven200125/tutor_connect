@@ -16,7 +16,7 @@ if ($estudiante) {
     $_SESSION['nombre'] = $estudiante['nombre'];
     header("Location: ../../views/studentProfile.html");
     exit();
-}
+}   
 
 // Buscar en tutor
 $sqlTutor = "SELECT * FROM tutor WHERE correo_electronico = '$correo' AND contrasena = '$contrasena'";
@@ -31,4 +31,4 @@ if ($tutor) {
     exit();
 }
 
-echo "Correo o contraseña incorrectos";
+header("Location: ../../views/login.html?error=1");
