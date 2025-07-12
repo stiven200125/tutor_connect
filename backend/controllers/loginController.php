@@ -27,7 +27,7 @@ if ($tutor) {
     $_SESSION['id'] = $tutor['idTutor'];
     $_SESSION['rol'] = 2;
     $_SESSION['nombre'] = $tutor['nombre'];
-    echo "Login exitoso como tutor";
+    header("Location: ../../views/tutorProfile.html");
     exit();
 }
 

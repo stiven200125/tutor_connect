@@ -70,3 +70,14 @@
     justify-content: center;
     gap: 10px;
 }
+
+#work-in-progress-body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+#container-work-in-progress {
+    display: flex;
+    align-items: center;
+}
