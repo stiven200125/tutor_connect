@@ -4,7 +4,7 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     
-    $host = "127.0.0.1:3307";
+    $host = "localhost";
     $port = "";
     $user = "root";
     $password = "";
