@@ -15,13 +15,24 @@ switch ($accion) {
         exit();
 
     case 'editar':
-        $exito = PerfilController::editar($_POST);
-        if ($exito) {
-            header("Location: ../../views/studentProfile.html?exito=1");
-        } else {
-            header("Location: ../../views/studentProfile.html?error=1");
-        }
-        break;
+    $exito = PerfilController::editar($_POST);
+    $rol = $_POST['rol'] ?? null;
+
+    if ($rol == 1) {
+        $redirect = 'studentProfile.html';
+    } elseif ($rol == 2) {
+        $redirect = 'tutorProfile.html';
+    } else {
+        $redirect = 'login.html'; // Redirigir a login si el rol es inválido
+    }
+
+    if ($exito) {
+        header("Location: ../../views/$redirect?exito=1");
+    } else {
+        header("Location: ../../views/$redirect?error=1");
+    }
+    break;
+
 
     case 'eliminar':
         $id = $_POST['id'];

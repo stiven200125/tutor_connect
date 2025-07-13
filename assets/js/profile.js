@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.querySelector('input[name="telefono"]').value = data.telefono || '';
                 document.querySelector('input[name="correo"]').value = data.correo_electronico || '';
                 document.querySelector('select[name="area"]').value = data.idArea || '';
+                document.querySelector('input[name="descripcion"]').value = data.descripcion || '';
+                document.querySelector('input[name="precio"]').value = data.precio || '';
                 document.getElementById("user-id").value = data.id || '';
                 document.getElementById("user-rol").value = data.rol || '';
                 document.querySelector('#correo-hidden').value = data.correo_electronico || '';

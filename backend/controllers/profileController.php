@@ -7,7 +7,7 @@ class PerfilController {
         if ($rol === 1) {
             $sql = "SELECT nombre, apellido,telefono,direccion,correo_electronico,idArea FROM estudiante WHERE idEstudiante = $id";
         } elseif ($rol === 2) {
-            $sql = "SELECT nombre, apellido FROM tutor WHERE idTutor = $id";
+            $sql = "SELECT nombre, apellido,telefono,direccion,correo_electronico,idArea,descripcion,precio FROM tutor WHERE idTutor = $id";
         } else {
             return false; // rol inválido
         }
@@ -18,12 +18,8 @@ class PerfilController {
         return $usuario ?: false;
     }
 
-    public static function editar($datos) {
+public static function editar($datos) {
     global $conexion;
-
-    // Depurar datos recibidos
-    error_log("== DATOS RECIBIDOS EN editar() ==");
-    error_log(print_r($datos, true));
 
     $id = $datos["id"] ?? null;
     $rol = $datos["rol"] ?? null;
@@ -33,6 +29,13 @@ class PerfilController {
     $area = $datos["area"] ?? '';
     $correo = $datos["correo"] ?? '';
     $telefono = $datos["telefono"] ?? '';
+    $descripcion = $datos["descripcion"] ?? '';
+    $precio = $datos["precio"] ?? 0.0;
+    $foto = null;
+
+    if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+        $foto = file_get_contents($_FILES['foto']['tmp_name']);
+    }
 
     if (!$id || !$rol) {
         error_log("Falta el ID o ROL");
@@ -41,40 +44,64 @@ class PerfilController {
 
     if ($rol == 1) {
         $sql = "UPDATE estudiante 
-                SET nombre = '$nombre', 
-                    apellido = '$apellido', 
-                    correo_electronico = '$correo', 
-                    direccion = '$direccion', 
-                    telefono = '$telefono', 
-                    idArea = '$area' 
-                WHERE idEstudiante = $id";
+                SET nombre = :nombre,
+                    apellido = :apellido,
+                    correo_electronico = :correo,
+                    direccion = :direccion,
+                    telefono = :telefono,
+                    idArea = :area";
+        if ($foto !== null) {
+            $sql .= ", foto = :foto";
+        }
+        $sql .= " WHERE idEstudiante = :id";
     } elseif ($rol == 2) {
         $sql = "UPDATE tutor 
-                SET nombre = '$nombre', 
-                    apellido = '$apellido', 
-                    correo_electronico = '$correo', 
-                    direccion = '$direccion', 
-                    telefono = '$telefono', 
-                    idArea = '$area' 
-                WHERE idTutor = $id";
+                SET nombre = :nombre,
+                    apellido = :apellido,
+                    correo_electronico = :correo,
+                    direccion = :direccion,
+                    telefono = :telefono,
+                    idArea = :area,
+                    descripcion = :descripcion,
+                    precio = :precio";
+
+        if ($foto !== null) {
+            $sql .= ", foto = :foto";
+        }
+        $sql .= " WHERE idTutor = :id";
     } else {
         error_log("ROL no reconocido: $rol");
         return false;
     }
 
-    // Ver el SQL que se va a ejecutar
-    error_log("SQL a ejecutar: $sql");
+    $stmt = $conexion->prepare($sql);
+    $stmt->bindParam(':nombre', $nombre);
+    $stmt->bindParam(':apellido', $apellido);
+    $stmt->bindParam(':correo', $correo);
+    $stmt->bindParam(':direccion', $direccion);
+    $stmt->bindParam(':telefono', $telefono);
+    $stmt->bindParam(':area', $area);
 
-    $resultado = $conexion->exec($sql);
-
-    if ($resultado === false) {
-        $errorInfo = $conexion->errorInfo();
-        error_log("Error SQL: " . print_r($errorInfo, true));
+    if ($rol == 2) {
+        $stmt->bindParam(':descripcion', $descripcion);
+        $stmt->bindParam(':precio', $precio);
     }
 
-    return $resultado !== false;
-}
+    if ($foto !== null) {
+        $stmt->bindParam(':foto', $foto, PDO::PARAM_LOB);
+    }
 
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+
+    $resultado = $stmt->execute();
+
+    if (!$resultado) {
+        error_log("Error al ejecutar SQL: " . print_r($stmt->errorInfo(), true));
+    }
+
+    return $resultado;
+}
 
     public static function eliminar($id, $rol) {
         global $conexion;
