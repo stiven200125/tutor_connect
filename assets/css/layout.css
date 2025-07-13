@@ -19,7 +19,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 #block-name-user {
@@ -42,6 +41,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin-left: 10px;
 }
 
 /* Style footer */
@@ -54,6 +54,7 @@
     width: 100%;
     height: auto;
     text-align: center;
+    padding: 10px 0 10px 0;
 }
 
 #footer-component {

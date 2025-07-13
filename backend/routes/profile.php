@@ -14,16 +14,24 @@ $rol = $_SESSION['rol'];
 $usuario = PerfilController::obtenerPerfil($id, $rol);
 
 if ($usuario) {
-    echo json_encode([
-        "id" => $id,
-        "nombre" => $usuario['nombre'],
-        "apellido" => $usuario['apellido'],
-        "direccion" => $usuario['direccion'],
-        "telefono" => $usuario['telefono'],
-        "correo_electronico" => $usuario['correo_electronico'],
-        "idArea" => $usuario['idArea'],
-        "rol" => $rol
-    ]);
+    $response = [
+    "id" => $id,
+    "nombre" => $usuario['nombre'],
+    "apellido" => $usuario['apellido'],
+    "direccion" => $usuario['direccion'],
+    "telefono" => $usuario['telefono'],
+    "correo_electronico" => $usuario['correo_electronico'],
+    "idArea" => $usuario['idArea'],
+    "rol" => $rol
+];
+
+if ($rol === 2) {
+    $response["descripcion"] = $usuario['descripcion'];
+    $response["precio"] = $usuario['precio'];
+}
+
+echo json_encode($response);
+
 } else {
     echo json_encode(["error" => "Usuario no encontrado"]);
 }

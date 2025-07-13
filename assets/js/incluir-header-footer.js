@@ -12,14 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!data.error) {
                         const nombre = data.nombre.split(" ")[0];
                         const apellido = data.apellido.split(" ")[0];
+                        const rol = data.rol;
 
-                        // Capitalizar por separado
+                        // Capitalizar el primer carácter de nombre y apellido
                         const capitalizedNombre = nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase();
                         const capitalizedApellido = apellido.charAt(0).toUpperCase() + apellido.slice(1).toLowerCase();
 
                         const nameUserSpan = document.getElementById("name-user");
+                        const typerolSpan = document.getElementById("type-rol");
                         if (nameUserSpan) {
                             nameUserSpan.textContent = `${capitalizedNombre} ${capitalizedApellido}`;
+                            typerolSpan.textContent = rol === 1 ? "Estudiante" : rol === 2 ? "Tutor" : "Administrador";
                         }
                     } else {
                         window.location.href = "/views/login.html";

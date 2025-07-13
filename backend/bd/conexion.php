@@ -15,8 +15,8 @@
     try{
         $dsn = "$motordb:host=$host;port=$port;dbname=$database;charset=utf8mb4";
         $conexion = new PDO($dsn, $user, $password,[
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,          // Lanzar excepciones en errores
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC      // Retornar resultados como arrays asociativos
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,          
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC     
         ]);
 
         

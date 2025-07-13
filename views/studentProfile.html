@@ -33,11 +33,11 @@
                 <img src="../assets/img/logo-my-profile.png" alt="logo mi perfil" id="profile-logo">
                 <h1 id="profile-title">Mi Perfil</h1>
             </div>
-            <form action="../backend/routes/index.php?accion=editar" method="POST">
+            <form action="../backend/routes/index.php?accion=editar" method="POST" enctype="multipart/form-data">
                 <div id="profile-content-form">
                     <div id="profile-picture-container">
-                        <img src="../assets/img/img-profile-tutor.png" alt="profile picture" id="profile-picture">
-                        <input type="file" id="profile-picture-input" accept="image/*">
+                        <img src="../backend/routes/getFoto.php" alt="profile picture" id="profile-picture">
+                        <input type="file" name="foto" id="profile-picture-input" accept="image/*">
                     </div>
                     <div id="profile-info-container">
                         <div id="profile-info-container-part-one">
@@ -48,11 +48,10 @@
                             <input type="text" class="form-control" name="apellido" required>
                             
                             <label for="">Dirección:</label>
-                            <input type="text" class="form-control" name="direccion" required>
+                            <input type="text" class="form-control" name="direccion" placeholder="Ingresa tu Dirección" required>
                         </div>
                         <div id="profile-info-container-part-one">
                             <label for="">Área:</label>
-                            <!-- <input type="text" class="form-control" name="area" required> -->
                             <select class="form-select" name="area" required>
                             </select>
                             
@@ -61,7 +60,7 @@
                             <input type="hidden" name="correo" id="correo-hidden">
                             
                             <label for="">Teléfono:</label>
-                            <input type="tel" class="form-control" name="telefono" required>
+                            <input type="tel" class="form-control" name="telefono" placeholder="Ingresa tu Teléfono" required>
                         </div>
                     </div>
                     <input type="hidden" name="id" id="user-id">
@@ -89,7 +88,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Haz actualizado tu registro exitosamente.</p>
+                    <p>Haz actualizado tu información exitosamente.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" onclick="window.location.href='studentProfile.html'">Aceptar</button>
