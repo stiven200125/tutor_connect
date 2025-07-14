@@ -115,8 +115,23 @@ form {
 
 /* ----------------CSS TUTOR-------------------- */
 
+/* #description-tutor {
+    height: 134px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    resize: none;
+} */
+
 #description-tutor {
     height: 134px;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 12px;
+    resize: none;
+    border: 1px solid #ced4da;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
 #profile-tutor-info-container {

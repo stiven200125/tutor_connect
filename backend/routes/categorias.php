@@ -3,7 +3,7 @@ session_start();
 
 // Verificar si el usuario tiene sesión activa
 if (!isset($_SESSION['id'])) {
-    http_response_code(401); // Unauthorized
+    http_response_code(401); // No autorizado
     echo json_encode(['error' => 'No autorizado']);
     exit;
 }
