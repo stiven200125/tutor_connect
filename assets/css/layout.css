@@ -13,6 +13,9 @@
     align-items: center;
 }
 
+#left-block {
+    display: flex;
+}
 
 #right-block {
     width: 15%;

@@ -20,16 +20,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         const nameUserSpan = document.getElementById("name-user");
                         const typerolSpan = document.getElementById("type-rol");
-                        if (nameUserSpan) {
+                        const navLinks = document.getElementById("nav-links");
+
+                        if (nameUserSpan && typerolSpan) {
                             nameUserSpan.textContent = `${capitalizedNombre} ${capitalizedApellido}`;
                             typerolSpan.textContent = rol === 1 ? "Estudiante" : rol === 2 ? "Tutor" : "Administrador";
                         }
+
+                        // Lógica de menú dinámico según el rol
+                        if (navLinks) {
+                            navLinks.innerHTML = ""; // Limpiar menú previo
+
+                            if (rol === 1) {
+                                // Menú para Estudiante
+                                navLinks.innerHTML = `
+                                    <li class="nav-item"><a class="nav-link" href="studentProfile.html">Perfil</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="tutores.html">Tutores</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" id="logout-link">Cerrar sesión</a></li>
+                                `;
+                            } else if (rol === 2) {
+                                // Menú para Tutor
+                                navLinks.innerHTML = `
+                                    <li class="nav-item"><a class="nav-link" href="tutorProfile.html">Perfil</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="solicitudes.html">Solicitudes</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" id="logout-link">Cerrar sesión</a></li>
+                                `;
+                            } 
+                            // Asignar evento al logout dinámico
+                            const logoutLink = document.getElementById("logout-link");
+                            if (logoutLink) {
+                                logoutLink.addEventListener("click", function (e) {
+                                    e.preventDefault();
+                                    fetch('../backend/routes/logout.php') // Debes tener este archivo para cerrar sesión
+                                        .then(() => {
+                                            window.location.href = "../views/login.html";
+                                        });
+                                });
+                            }
+                        }
+
                     } else {
-                        window.location.href = "/views/login.html";
+                        window.location.href = "../views/login.html";
                     }
                 })
                 .catch(() => {
-                    window.location.href = "/views/login.html";
+                    window.location.href = "../views/login.html";
                 });
         });
 
