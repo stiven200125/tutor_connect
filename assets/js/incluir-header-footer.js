@@ -35,14 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                 // Menú para Estudiante
                                 navLinks.innerHTML = `
                                     <li class="nav-item"><a class="nav-link" href="studentProfile.html">Perfil</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="tutores.html">Tutores</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="findTutor.html">Buscar Tutores</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#" id="logout-link">Cerrar sesión</a></li>
                                 `;
                             } else if (rol === 2) {
                                 // Menú para Tutor
                                 navLinks.innerHTML = `
                                     <li class="nav-item"><a class="nav-link" href="tutorProfile.html">Perfil</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="solicitudes.html">Solicitudes</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="applications.html">Solicitudes</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#" id="logout-link">Cerrar sesión</a></li>
                                 `;
                             } 
