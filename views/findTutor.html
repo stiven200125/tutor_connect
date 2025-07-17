@@ -28,60 +28,62 @@
         </header>
 
         <main id="main-container">
-            <vid id="main_container_one">
-                <h3>Filtros</h3>
-                <form action="#" id="form-filter">
-                    <div id="form-group">
-                        <label for="">Area:</label>
-                        <select class="form-select" name="area">
-                            <option value="">Matemáticas</option>
-                        </select>
-                    </div>
-                    <button class="btn btn-outline-primary button-main" type="submit" id="btn-filter">Filtrar</button>
-                </form>
-                <h3>Resultados</h3>
-                <p>Estos son los tutores que más cumplen con tus necesidades</p>
-            </vid>
-            <vid id="main_container_two">
-                <div>
-                    <img src="../assets/img/tutor_one.png" alt="profile picture" id="profile-picture"/>
-                    <div>
-                        <div>
-                            <p>Nombre: Pedro Antonio Pardo Calderón</p>
-                            <p>Area de desempeño: Matemáticas</p>
-                            <p>
-                                Descripción: Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut.
-                            </p>
+            <div id="main-container-flex">
+                <div id="main_container_one">
+                    <h4 id="title-form">Filtros</h4>
+                    <form action="#" id="form-filter">
+                        <div id="form-group">
+                            <label for="" id="title-area">Area:</label>
+                            <select class="form-select" name="area">
+                                <option value="">Matemáticas</option>
+                            </select>
                         </div>
-                        <div>
-                            <p>50.000</p>
-                            <button class="btn btn-outline-primary button-main" type="submit" id="btn-filter">Contactar</button>
+                        <button class="btn btn-outline-primary button-main" type="submit" id="btn-filter">Filtrar</button>
+                    </form>
+                    <h4 id="title-results">Resultados</h4>
+                    <p>Estos son los tutores que más cumplen con tus necesidades</p>
+                </div>
+                <div id="main_container_two">
+                    <div id="find-tutor-container">
+                        <img src="../assets/img/tutor_one.png" alt="profile picture" id="profile-picture"/>
+                        <div id="tutor-details">
+                            <div>
+                                <p id="text-info"><span>Nombre: </span>Pedro Antonio Pardo Calderón</p>
+                                <p id="text-info"><span>Area de desempeño: </span> Matemáticas</p>
+                                <p id="text-info">
+                                    <span>Descripción: </span>Lorem ipsum dolor sit amet, consectetur adipiscing
+                                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut.
+                                </p>
+                            </div>
+                            <div id="tutor-details-price">
+                                <span id="text-info">50.000</span>
+                                <button class="btn btn-outline-primary button-main" type="submit">Contactar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="find-tutor-container">
+                        <img src="../assets/img/tutor_two.png" alt="profile picture" id="profile-picture"/>
+                        <div id="tutor-details">
+                            <div>
+                                <p id="text-info"><span>Nombre: </span>Pedro Antonio Pardo Calderón</p>
+                                <p id="text-info"><span>Area de desempeño: </span> Matemáticas</p>
+                                <p id="text-info">
+                                    <span>Descripción: </span>Lorem ipsum dolor sit amet, consectetur adipiscing
+                                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut.
+                                </p>
+                            </div>
+                            <div id="tutor-details-price">
+                                <span id="text-info">50.000</span>
+                                <button class="btn btn-outline-primary button-main" type="submit">Contactar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <img src="../assets/img/tutor_two.png" alt="profile picture" id="profile-picture"/>
-                    <div>
-                        <div>
-                            <p>Nombre: Ana Maria Perez Suares</p>
-                            <p>Area de desempeño: Matemáticas</p>
-                            <p>
-                                Descripción: Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut.
-                            </p>
-                        </div>
-                        <div>
-                            <p>50.000</p>
-                            <button class="btn btn-outline-primary button-main" type="submit" id="btn-filter">Contactar</button>
-                        </div>
-                    </div>
-                </div>
-            </vid>
+            </div>
         </main>
 
         <footer>

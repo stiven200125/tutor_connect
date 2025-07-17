@@ -1,5 +1,25 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
 #main-container {
-    padding: 20px 20px 40px 30px;
+    background-color: #E2E2E2;
+    display: flex;
+    justify-content: center;  
+    flex: 1;
+}
+
+#main-container-flex {
+    width: 95%;
+}
+
+#title-form {
+    font-weight: 600;
+    margin: 10px 0 10px 0;
 }
 
 #form-filter {
@@ -7,8 +27,68 @@
     justify-content: flex-start;
 }
 
+#btn-filter {
+    margin: 30px 0 0 20px;
+}
+
 #form-group {
     width: 25%;
+}
+
+#title-area {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+
+#title-results {
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+#profile-picture {
+    width: 140px;
+    height: 130px;
+    border-radius: 5%;
+    margin-right: 10px;
+    height: auto;
+}
+
+#main_container_two{
+    background-color: #E2E2E2;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#find-tutor-container {
+    display: flex;
+    margin: 0px 10px 10px 0px;
+    width: 49%;
+}
+
+#tutor-details {
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+
+#text-info {
+    margin: 0;
+    padding: 2px;
+}
+
+span {
+    font-weight: 600;
+}
+
+#tutor-details-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #btn-filter {
@@ -16,12 +96,4 @@
     width: 100px;
     border-radius: 5px;
     font-weight: 600;
-    margin: 10px 0 10px 20px;
-}
-
-#profile-picture {
-    width: 130px;
-    height: 119px;
-    border-radius: 5%;
-    margin-right: 20px;
 }

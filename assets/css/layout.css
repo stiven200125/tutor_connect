@@ -13,6 +13,12 @@
     align-items: center;
 }
 
+.nav-item a {
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #000000; 
+}
+
 #left-block {
     display: flex;
 }
@@ -35,8 +41,8 @@
     font-weight: bold;
 }
 
-#type-roll {
-    font-size: 0.9em;
+#type-rol {
+    font-size: 0.8em;
     text-align: center;
 }
 
@@ -54,16 +60,16 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: auto;
     text-align: center;
-    padding: 10px 0 10px 0;
+    padding: 10px 0;
+    position: fixed;
 }
 
 #footer-component {
     color: white;
 }
 
-#text-footer p {
+#text-footer {
     font-size: 0.8rem;
     margin-bottom: auto;
 }
