@@ -29,9 +29,8 @@ try {
     $stmt->execute();
     $tutores = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Adjuntar ruta de imagen para cada tutor
     foreach ($tutores as &$tutor) {
-        $tutor['foto_url'] = '/proyectoADSO/backend/routes/getFotoUsuario.php?id=' . $tutor['idTutor'];
+        $tutor['foto_url'] = '/tutor_connect/backend/routes/getFotoUsuario.php?id=' . $tutor['idTutor'] . '&rol=2';
     }
 
     echo json_encode($tutores);

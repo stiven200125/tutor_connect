@@ -1,14 +1,13 @@
 <?php
 require_once __DIR__ . '/../bd/conexion.php';
 
-// Validación básica
 if (!isset($_GET['id']) || !isset($_GET['rol'])) {
     http_response_code(400);
     exit('Parámetros faltantes: id y rol');
 }
 
 $id = intval($_GET['id']);
-$rol = intval($_GET['rol']); // 1 = estudiante, 2 = tutor
+$rol = intval($_GET['rol']);
 
 try {
     if ($rol === 1) {
@@ -25,7 +24,6 @@ try {
     $foto = $stmt->fetchColumn();
 
     if ($foto) {
-        // Detectar tipo MIME
         $finfo = finfo_open();
         $mime_type = finfo_buffer($finfo, $foto, FILEINFO_MIME_TYPE);
         finfo_close($finfo);
@@ -33,7 +31,6 @@ try {
         header("Content-Type: $mime_type");
         echo $foto;
     } else {
-        // Imagen por defecto
         $defaultPath = __DIR__ . '/../../assets/img/img-user-default.png';
         if (file_exists($defaultPath)) {
             header("Content-Type: image/png");
