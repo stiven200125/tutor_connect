@@ -46,6 +46,10 @@ html, body {
     margin-top: 20px;
 }
 
+#resultados-titulo p {
+    margin: 0;
+}
+
 #profile-picture {
     width: 140px;
     height: 130px;
@@ -59,6 +63,7 @@ html, body {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 #find-tutor-container {
@@ -80,7 +85,7 @@ html, body {
     padding: 2px;
 }
 
-span {
+#tutor-details span {
     font-weight: 600;
 }
 
@@ -94,6 +99,12 @@ span {
 #btn-filter {
     height: 40px;
     width: 100px;
-    border-radius: 5px;
     font-weight: 600;
+}
+
+#btn-delete-filter {
+    height: 40px;
+    width: 100px;
+    font-weight: 600;
+    margin: 30px 0 0 20px;
 }
