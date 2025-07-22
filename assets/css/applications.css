@@ -1,0 +1,64 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-container {
+    background-color: #E2E2E2;
+    display: flex;
+    justify-content: center;  
+    flex: 1;
+}
+
+#main-container-flex {
+    width: 95%;
+}
+
+
+#title-applications {
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+#profile-picture {
+    width: 140px;
+    height: 130px;
+    border-radius: 5%;
+    margin-right: 10px;
+    height: auto;
+}
+
+#applications-container {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+#cr-1 {
+    display: flex;
+    width: 49%;
+}
+
+#student-details {
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+
+#text-info {
+    margin: 0;
+    padding: 2px;
+}
+
+#student-details span {
+    font-weight: 600;
+}
+
+#schedule-tutoring {
+    display: flex;
+    align-items: flex-end;
+}
