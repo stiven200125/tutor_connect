@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para cargar tutores
     function cargarTutores(idArea = null, esFiltrado = false) {
-        let url = "../backend/routes/buscartutores.php";
+        let url = "../backend/routes/findTutores.php";
         if (idArea) {
             url += `?idArea=${idArea}`;
         }
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                                 <div id="tutor-details-price">
                                     <span id="text-info">$${tutor.precio.toLocaleString("es-CO", { style: "currency", currency: "COP" })}</span>
-                                    <button class="btn btn-outline-primary button-main btn-contactar" type="button" data-email="${tutor.email}" data-nombre="${tutor.nombre} ${tutor.apellido}">Contactar</button>
+                                    <button class="btn btn-outline-primary button-main btn-contactar" type="button" data-email="${tutor.correo_electronico}">Contactar</button>
                                 </div>
                             </div>
                         </div>
@@ -92,19 +92,51 @@ document.addEventListener("DOMContentLoaded", function () {
     // Cargar todos los tutores al inicio sin filtro
     cargarTutores(null, false);
     
+
     // Delegación para abrir modal al hacer clic en "Contactar"
     containerResultados.addEventListener("click", function (e) {
-        if (e.target.classList.contains("btn-contactar")) {
-            const emailTutorValue = e.target.dataset.email;
-            const nombreTutor = e.target.dataset.nombre;
-            const correoEstudiante = "estudiante@correo.com";
-            
-            emailEstudiante.value = correoEstudiante;
-            emailTutor.value = emailTutorValue;
-            formContacto.reset();
-            mensajeExito.classList.add("d-none");
-            
-            modal.show();
-        }
-    });
+    if (e.target.classList.contains("btn-contactar")) {
+        formContacto.reset();
+        mensajeExito.classList.add("d-none");
+        modal.show();
+
+        // Obtener y mostrar correo del estudiante desde sesión
+        fetch('../backend/routes/getEstudianteSesion.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.correo) {
+                    document.getElementById('emailEstudiante').value = data.correo;
+                }
+            });
+
+        // Obtener correo y nombre del tutor desde el botón
+        const correoTutor = e.target.dataset.email;
+        document.getElementById('emailTutor').value = correoTutor;
+
+        cargarFranjas();
+    }
 });
+
+
+    function cargarFranjas() {
+    fetch("../backend/routes/getFranjas.php")
+        .then(res => res.json())
+        .then(franjas => {
+            const selectFranja = document.getElementById("franja");
+            selectFranja.innerHTML = '<option value="">-- Selecciona una franja --</option>';
+
+            franjas.forEach(f => {
+                const option = document.createElement("option");
+                option.value = f.idFranja;
+                option.textContent = f.descripcion;
+                selectFranja.appendChild(option);
+            });
+        })
+        .catch(err => {
+            console.error("Error al cargar franjas:", err);
+        });
+}
+
+
+});
+

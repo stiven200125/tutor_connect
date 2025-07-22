@@ -12,7 +12,7 @@ if (!isset($_SESSION['id']) || $_SESSION['rol'] != 1) {
 try {
     $idArea = isset($_GET['idArea']) ? intval($_GET['idArea']) : null;
 
-    $sql = "SELECT t.idTutor, t.nombre, t.apellido, t.descripcion, t.precio, a.nombre_area
+    $sql = "SELECT t.idTutor, t.nombre, t.apellido, t.descripcion, t.precio, t.correo_electronico,a.nombre_area
             FROM tutor t
             JOIN area a ON t.idArea = a.idArea";
 
