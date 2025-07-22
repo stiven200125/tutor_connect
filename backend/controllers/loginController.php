@@ -14,6 +14,7 @@ if ($estudiante) {
     $_SESSION['id'] = $estudiante['idEstudiante'];
     $_SESSION['rol'] = 1;
     $_SESSION['nombre'] = $estudiante['nombre'];
+    $_SESSION['correo'] = $estudiante['correo_electronico'];
     header("Location: ../../views/studentProfile.html");
     exit();
 }   
@@ -27,6 +28,7 @@ if ($tutor) {
     $_SESSION['id'] = $tutor['idTutor'];
     $_SESSION['rol'] = 2;
     $_SESSION['nombre'] = $tutor['nombre'];
+    $_SESSION['correo'] = $tutor['correo_electronico'];
     header("Location: ../../views/tutorProfile.html");
     exit();
 }
