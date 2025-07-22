@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnBorrarFiltro = document.getElementById("btn-delete-filter");
     const containerResultados = document.getElementById("main_container_two");
     const tituloResultados = document.getElementById("resultados-titulo");
+    const modal = new bootstrap.Modal(document.getElementById("modalContacto"));
+    const formContacto = document.getElementById("formContacto");
+    const emailEstudiante = document.getElementById("emailEstudiante");
+    const emailTutor = document.getElementById("emailTutor");
+    const mensajeExito = document.getElementById("mensajeExito");
+
 
     // Cargar las áreas desde el backend
     fetch("../backend/routes/categorias.php")
@@ -54,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                                 <div id="tutor-details-price">
                                     <span id="text-info">$${tutor.precio.toLocaleString("es-CO", { style: "currency", currency: "COP" })}</span>
-                                    <button class="btn btn-outline-primary button-main" type="button">Contactar</button>
+                                    <button class="btn btn-outline-primary button-main btn-contactar" type="button" data-email="${tutor.email}" data-nombre="${tutor.nombre} ${tutor.apellido}">Contactar</button>
                                 </div>
                             </div>
                         </div>
@@ -85,4 +91,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Cargar todos los tutores al inicio sin filtro
     cargarTutores(null, false);
+    
+    // Delegación para abrir modal al hacer clic en "Contactar"
+    containerResultados.addEventListener("click", function (e) {
+        if (e.target.classList.contains("btn-contactar")) {
+            const emailTutorValue = e.target.dataset.email;
+            const nombreTutor = e.target.dataset.nombre;
+            const correoEstudiante = "estudiante@correo.com";
+            
+            emailEstudiante.value = correoEstudiante;
+            emailTutor.value = emailTutorValue;
+            formContacto.reset();
+            mensajeExito.classList.add("d-none");
+            
+            modal.show();
+        }
+    });
 });
