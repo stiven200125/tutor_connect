@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const tituloResultados = document.getElementById("resultados-titulo");
     const modal = new bootstrap.Modal(document.getElementById("modalContacto"));
     const formContacto = document.getElementById("formContacto");
-    const emailEstudiante = document.getElementById("emailEstudiante");
-    const emailTutor = document.getElementById("emailTutor");
     const mensajeExito = document.getElementById("mensajeExito");
 
 
@@ -60,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                                 <div id="tutor-details-price">
                                     <span id="text-info">$${tutor.precio.toLocaleString("es-CO", { style: "currency", currency: "COP" })}</span>
-                                    <button class="btn btn-outline-primary button-main btn-contactar" type="button" data-email="${tutor.correo_electronico}">Contactar</button>
+                                    <button class="btn btn-outline-primary button-main btn-contactar" type="button" data-email="${tutor.correo_electronico}" data-id="${tutor.idTutor}">Contactar</button>
                                 </div>
                             </div>
                         </div>
@@ -112,6 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Obtener correo y nombre del tutor desde el botón
         const correoTutor = e.target.dataset.email;
         document.getElementById('emailTutor').value = correoTutor;
+        
+        const idTutor = e.target.dataset.id;
+        document.getElementById('idTutor').value = idTutor;
+
 
         cargarFranjas();
     }
@@ -135,7 +137,39 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(err => {
             console.error("Error al cargar franjas:", err);
         });
-}
+    }
+
+    formContacto.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!formContacto.checkValidity()) {
+        formContacto.classList.add("was-validated");
+        return;
+    }
+
+    const formData = new FormData(formContacto);
+
+    fetch("../backend/routes/saveTutoring.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error("Error al guardar la tutoría");
+        }
+        return res.text();
+    })
+    .then(response => {
+        mensajeExito.textContent = response;
+        mensajeExito.classList.remove("d-none");
+        formContacto.reset();
+        formContacto.classList.remove("was-validated");
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Ocurrió un error al guardar la tutoría.");
+    });
+});
 
 
 });

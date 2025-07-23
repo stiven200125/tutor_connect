@@ -31,7 +31,7 @@ $idFranja = $_POST['idFranja'];
 
 try {
     $stmt = $conexion->prepare("
-        INSERT INTO tutoria (idTutor, idEstudiante, asunto, descripcion, fecha, idFranjaHoraria)
+        INSERT INTO tutoria (idTutor, idEstudiante, asunto, descripcion, fecha, idFranja)
         VALUES (:idTutor, :idEstudiante, :asunto, :descripcion, :fecha, :idFranja)
     ");
 

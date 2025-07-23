@@ -30,41 +30,51 @@
     <main id="main-container">
         <div id="main-container-flex">
             <h3 id="title-applications">Mis solicitudes</h3>
-            <div id="applications-container">
-                <div id="cr-1">
-                    <img src="../assets/img/tutor_one.png" alt="profile picture" id="profile-picture"/>
-                    <div id="student-details">
-                        <div>
-                            <p id="text-info"><span>Nombre: </span>Steven Mateo Diaz Manzano</p>
-                            <p id="text-info"><span>Asunto: </span>Solicitud para la programación de una tutoría</p>
-                            <p id="text-info"><span>Descripción: </span>
-                                Espero de encuentre muy bien tutor, le escribó para 
-                                solicitarle una tutoría de refuerzo en contabilidad ya que este semestre no me fué muy bien y 
-                                siento que aún tengo muchos vacíos en esta materia.
-                            </p>
-                        </div>
-                        <div id="schedule-tutoring">
-                            <button class="btn btn-outline-primary button-main btn-contactar" type="button">Agendar</button>
-                        </div>
+            <div id="applications-container"></div>
+
+                <!-- Modal de contacto -->
+                <div class="modal fade" id="modalAgendar" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form class="modal-content needs-validation" id="formAgendar" novalidate>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalContactoLabel">Agendar Tutoría</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="emailEstudiante" class="form-label">Correo del estudiante</label>
+                                    <input type="email" class="form-control" id="emailEstudiante" disabled required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="emailTutor" class="form-label">Correo del tutor</label>
+                                    <input type="email" class="form-control" id="emailTutor" disabled required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="fecha" class="form-label">Fecha</label>
+                                    <input type="date" class="form-control" id="fecha" disabled required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="franja" class="form-label">Franja horaria</label>
+                                    <input type="text" class="form-control" id="horario" disabled required></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="horario" class="form-label">Horario disponible</label>
+                                    <select class="form-select" id="horario" required></select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="linkSesion" class="form-label">Link de Sesión</label>
+                                    <input type="url" class="form-control" id="linksesion" required>
+                                </div>
+                                <div id="mensajeExito" class="alert alert-success d-none">¡Tutoría agendada con éxito!</div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div id="cr-1">
-                    <img src="../assets/img/tutor_two.png" alt="profile picture" id="profile-picture"/>
-                    <div id="student-details">
-                        <div>
-                            <p id="text-info"><span>Nombre: </span>Steven Mateo Diaz Manzano</p>
-                            <p id="text-info"><span>Asunto: </span>Solicitud para la programación de una tutoría</p>
-                            <p id="text-info"><span>Descripción: </span>
-                                Espero de encuentre muy bien tutor, le escribó para 
-                                solicitarle una tutoría de refuerzo en contabilidad ya que este semestre no me fué muy bien y 
-                                siento que aún tengo muchos vacíos en esta materia.
-                            </p>
-                        </div>
-                        <div id="schedule-tutoring">
-                            <button class="btn btn-outline-primary button-main btn-contactar" type="button">Agendar</button>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </main>
@@ -77,5 +87,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Enlace de componente header-footer.js -->
     <script src="../assets/js/incluir-header-footer.js"></script>
+    <!-- Lógica de solicitudes -->
+    <script src="../assets/js/applications.js"></script>
 </body>
 </html>
