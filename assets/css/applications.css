@@ -36,9 +36,9 @@ html, body {
     
 }
 
-#cr-1 {
+#applications-card-container {
     display: flex;
-    width: 49%;
+    width: 95%;
 }
 
 #student-details {
