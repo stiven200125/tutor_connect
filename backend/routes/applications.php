@@ -26,7 +26,7 @@ try {
             JOIN estudiante ON tutoria.idEstudiante = estudiante.idEstudiante
             JOIN tutor ON tutoria.idTutor = tutor.idTutor
             WHERE tutoria.idTutor = :idTutor
-            AND tutoria.enlace_sesion IS NULL OR tutoria.enlace_sesion = ' '";
+            AND (tutoria.enlace_sesion IS NULL OR tutoria.enlace_sesion = ' ')";
 
     $stmt = $conexion->prepare($sql);
     $stmt->bindParam(':idTutor', $idTutor, PDO::PARAM_INT);
@@ -38,13 +38,13 @@ try {
         unset($tutoria['apellido_estudiante']); // ya no lo necesitamos
 
         // Foto del estudiante
-        $tutoria['foto_estudiante_url'] = "/tutor_connect/backend/routes/getFotoUsuario.php?id=" . $tutoria['idEstudiante'] . "&rol=1";
+        $tutoria['foto_estudiante_url'] = "../backend/routes/getFotoUsuario.php?id=" . $tutoria['idEstudiante'] . "&rol=1";
 
         // Franja horaria legible (opcional)
         $stmtFranja = $conexion->prepare("SELECT descripcion FROM franja_horaria WHERE idFranja = :idFranja");
         $stmtFranja->bindParam(':idFranja', $tutoria['idFranja'], PDO::PARAM_INT);
         $stmtFranja->execute();
-        $tutoria['descripcion'] = $stmtFranja->fetchColumn();
+        $tutoria['descripcion_franja'] = $stmtFranja->fetchColumn();
     }
 
     echo json_encode($tutorias);

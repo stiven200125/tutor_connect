@@ -3,11 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = new bootstrap.Modal(document.getElementById("modalAgendar"));
     const formAgendar = document.getElementById("formAgendar");
     const mensajeExito = document.getElementById("mensajeExito");
-
     const inputEmailEstudiante = document.getElementById("emailEstudiante");
     const inputEmailTutor = document.getElementById("emailTutor");
     const inputFecha = document.getElementById("fecha");
-    const inputFranja = document.getElementById("horario");
+    const inputFranja = document.getElementById("franja");
     const inputLinkSesion = document.getElementById("linksesion");
 
     // 1. Cargar solicitudes del backend
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return response.json();
         })
         .then((solicitudes) => {
-            if (solicitudes.length === 0) {
+            if (solicitudes.length == " ") {
                 containerResultados.innerHTML = `<p>No hay solicitudes pendientes.</p>`;
                 return;
             }
@@ -44,7 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                     data-correo-estudiante="${solicitud.correo_estudiante}"
                                     data-correo-tutor="${solicitud.correo_tutor}"
                                     data-fecha="${solicitud.fecha}"
-                                    data-franja="${solicitud.nombre_franja}"
+                                    data-franja="${solicitud.descripcion_franja}"
+                                    data-id-franja="${solicitud.idFranja}"
                                 >Agendar</button>
                             </div>
                         </div>
@@ -70,15 +70,86 @@ document.addEventListener("DOMContentLoaded", function () {
             const correoEstudiante = boton.getAttribute("data-correo-estudiante");
             const correoTutor = boton.getAttribute("data-correo-tutor");
             const fecha = boton.getAttribute("data-fecha");
-            const franja = boton.getAttribute("data-franja");
+            const franjaTexto = boton.getAttribute("data-franja");
+            const franjaId = boton.getAttribute("data-id-franja");
+            inputFranja.value = franjaTexto;
 
             // Llenar el modal con la info
             inputEmailEstudiante.value = correoEstudiante;
             inputEmailTutor.value = correoTutor;
             inputFecha.value = fecha;
-            inputFranja.value = franja;
 
+
+        // Cargar horas de la franja
+        fetch(`../backend/routes/getHorariosPorFranjas.php?idFranja=${franjaId}`)
+            .then(res => res.json())
+            .then(data => {
+                const select = document.getElementById('selectHorario');
+                select.innerHTML = '<option value="">Selecciona una hora</option>'; // reset
+
+                data.forEach(hora => {
+                    const option = document.createElement('option');
+                    option.value = hora.idHorario;
+                    option.textContent = hora.horaTutoria;
+                    select.appendChild(option);
+                });
+            })
+            .catch(err => {
+                console.error("Error al cargar horarios:", err);
+            });
+            document.getElementById("idTutoria").value = boton.getAttribute("data-id");
             modal.show();
         }
+    });
+
+    formAgendar.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const idTutoria = document.getElementById("idTutoria").value;
+        const idHorario = document.getElementById("selectHorario").value;
+        const linkSesion = document.getElementById("linksesion").value;
+
+        if (!idHorario || !linkSesion) {
+            alert("Por favor selecciona una hora y agrega un enlace.");
+            return;
+        }
+
+        const formData = new URLSearchParams();
+        formData.append("idTutoria", idTutoria);
+        formData.append("idHorario", idHorario);
+        formData.append("linkSesion", linkSesion);
+
+        fetch("../backend/routes/saveTutoring.php", {
+            method: "POST",
+            body: formData,
+        })
+        .then(res => res.text())
+        .then(response => {
+            if (response === "Tutoría Agendada con Éxito") {
+                mensajeExito.classList.remove("d-none");
+
+                // Ocultar modal después de 1.5s
+                setTimeout(() => {
+                    modal.hide();
+                    
+                    // Quitar la card del DOM
+                    const card = document.querySelector(`.btn-agendar[data-id='${idTutoria}']`)?.closest(".card-solicitud");
+                    if (card) card.remove();
+                    
+                    // Verificar si ya no quedan más cards
+                    const quedanSolicitudes = containerResultados.querySelectorAll(".card-solicitud").length;
+                    if (quedanSolicitudes === 0) {
+                        containerResultados.innerHTML = `<p>No hay solicitudes pendientes.</p>`;
+                    }
+                }, 1500);
+
+            } else {
+                alert("Error: " + response);
+            }
+        })
+        .catch(err => {
+            console.error("Error al enviar el formulario:", err);
+            alert("Ocurrió un error al agendar la tutoría.");
+        });
     });
 });
