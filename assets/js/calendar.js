@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const calendarioEl = document.getElementById("calendario");
-
     const calendario = new FullCalendar.Calendar(calendarioEl, {
-        locale: 'es', // aseguramos el idioma
+        locale: 'es', 
         themeSystem: 'bootstrap5',
         initialView: 'dayGridMonth',
         headerToolbar: {
@@ -29,4 +28,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     calendario.render();
+    
 });
