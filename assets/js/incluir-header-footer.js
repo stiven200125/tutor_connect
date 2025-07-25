@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 navLinks.innerHTML = `
                                     <li class="nav-item"><a class="nav-link" href="studentProfile.html">Perfil</a></li>
                                     <li class="nav-item"><a class="nav-link" href="findTutor.html">Buscar Tutores</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="calendar.html">Calendario</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#" id="logout-link">Cerrar sesión</a></li>
                                 `;
                             } else if (rol === 2) {
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 navLinks.innerHTML = `
                                     <li class="nav-item"><a class="nav-link" href="tutorProfile.html">Perfil</a></li>
                                     <li class="nav-item"><a class="nav-link" href="applications.html">Solicitudes</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="calendar.html">Calendario</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#" id="logout-link">Cerrar sesión</a></li>
                                 `;
                             } 

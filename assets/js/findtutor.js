@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (!Array.isArray(tutores) || tutores.length === 0) {
                     containerResultados.innerHTML = "<p>No se encontraron tutores.</p>";
-                    tituloResultados.style.display = esFiltrado ? "none" : "block";
+                    tituloResultados.style.display = "none";
                     return;
                 }
                 
