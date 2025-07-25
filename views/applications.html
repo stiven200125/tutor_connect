@@ -31,55 +31,53 @@
         <div id="main-container-flex">
             <h3 id="title-applications">Mis solicitudes</h3>
             <div id="applications-container"></div>
-
-                <!-- Modal de contacto -->
-                <div class="modal fade" id="modalAgendar" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <form class="modal-content needs-validation" id="formAgendar" novalidate>
-                            <input type="hidden" id="idTutoria" name="idTutoria">
-                            <input type="hidden" id="idHorario" name="idHorario">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalContactoLabel">Agendar Tutoría</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            <!-- Modal de contacto -->
+            <div class="modal fade" id="modalAgendar" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form class="modal-content needs-validation" id="formAgendar" novalidate>
+                        <input type="hidden" id="idTutoria" name="idTutoria">
+                        <input type="hidden" id="idHorario" name="idHorario">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalContactoLabel">Agendar Tutoría</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="emailEstudiante" class="form-label">Correo del estudiante</label>
+                                <input type="email" class="form-control" id="emailEstudiante" disabled required>
                             </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="emailEstudiante" class="form-label">Correo del estudiante</label>
-                                    <input type="email" class="form-control" id="emailEstudiante" disabled required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="emailTutor" class="form-label">Correo del tutor</label>
-                                    <input type="email" class="form-control" id="emailTutor" disabled required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="fecha" class="form-label">Fecha</label>
-                                    <input type="date" class="form-control" id="fecha" disabled required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="franja" class="form-label">Franja horaria</label>
-                                    <input type="text" class="form-control" id="franja" disabled required></input>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="selectHorario">Selecciona la hora:</label>
-                                    <select id="selectHorario" class="form-control" required>
-                                        <option value="">Selecciona una hora</option>
-                                        <!-- Las opciones se cargarán dinámicamente -->
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="linkSesion" class="form-label">Link de Sesión</label>
-                                    <input type="url" class="form-control" id="linksesion" required>
-                                </div>
-                                <div id="mensajeExito" class="alert alert-success d-none">¡Tutoría agendada con éxito!</div>
+                            <div class="mb-3">
+                                <label for="emailTutor" class="form-label">Correo del tutor</label>
+                                <input type="email" class="form-control" id="emailTutor" disabled required>
                             </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Enviar</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <div class="mb-3">
+                                <label for="fecha" class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="fecha" disabled required>
                             </div>
-                        </form>
-                    </div>
+                            <div class="mb-3">
+                                <label for="franja" class="form-label">Franja horaria</label>
+                                <input type="text" class="form-control" id="franja" disabled required></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="selectHorario">Selecciona la hora:</label>
+                                <select id="selectHorario" class="form-control" required>
+                                    <option value="">Selecciona una hora</option>
+                                    <!-- Las opciones se cargarán dinámicamente -->
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="linkSesion" class="form-label">Link de Sesión</label>
+                                <input type="url" class="form-control" id="linksesion" required>
+                            </div>
+                            <div id="mensajeExito" class="alert alert-success d-none">¡Tutoría agendada con éxito!</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
                 </div>
-
+            </div>
             </div>
         </div>
     </main>
