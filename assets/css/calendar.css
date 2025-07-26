@@ -1,0 +1,10 @@
+.fc-event {
+    padding: 4px 6px;
+    font-size: 13px;
+    background-color: rgb(140, 211, 233);
+}
+
+.fc-event.evento-tutoria {
+    white-space: normal;
+    line-height: 1.3;
+}

@@ -12,7 +12,7 @@ $estudiante = $resultadoEstudiante->fetch();
 
 if ($estudiante) {
     $_SESSION['id'] = $estudiante['idEstudiante'];
-    $_SESSION['rol'] = 1;
+    $_SESSION['rol'] = $estudiante['idRol'];;
     $_SESSION['nombre'] = $estudiante['nombre'];
     $_SESSION['correo'] = $estudiante['correo_electronico'];
     header("Location: ../../views/studentProfile.html");
@@ -26,7 +26,7 @@ $tutor = $resultadoTutor->fetch();
 
 if ($tutor) {
     $_SESSION['id'] = $tutor['idTutor'];
-    $_SESSION['rol'] = 2;
+    $_SESSION['rol'] = $tutor['idRol'];
     $_SESSION['nombre'] = $tutor['nombre'];
     $_SESSION['correo'] = $tutor['correo_electronico'];
     header("Location: ../../views/tutorProfile.html");

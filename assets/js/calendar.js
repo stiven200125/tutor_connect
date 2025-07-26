@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const calendarioEl = document.getElementById("calendario");
+
     const calendario = new FullCalendar.Calendar(calendarioEl, {
-        locale: 'es', 
+        locale: 'es',
         themeSystem: 'bootstrap5',
         initialView: 'dayGridMonth',
         headerToolbar: {
@@ -9,24 +10,28 @@ document.addEventListener("DOMContentLoaded", function () {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        selectable: true,
-        dateClick: function (info) {
-        alert("Haz clic en: " + info.dateStr);
+        eventClick: function (info) {
+        const props = info.event.extendedProps;
+
+        document.getElementById("emailEstudiante").textContent = props.correoEstudiante;
+        document.getElementById("emailTutor").textContent = props.correoTutor;
+        document.getElementById("fecha").textContent = props.fecha;
+        document.getElementById("franja").textContent = props.franja;
+        document.getElementById("horaSeleccionada").textContent = props.horaTutoria;
+
+        const enlace = document.getElementById("linksesion");
+        enlace.innerHTML = `<a href="${props.enlaceSesion}" target="_blank">${props.enlaceSesion}</a>`;
+
+        const modal = new bootstrap.Modal(document.getElementById("modalCalendar"));
+        modal.show();
         },
-        events: [
-        {
-            title: 'Tutoría con Juan',
-            start: '2025-07-20',
-            color: '#0d6efd'
-        },
-        {
-            title: 'Clase agendada',
-            start: '2025-07-22',
-            color: '#198754'
+        events: {
+        url: '../backend/routes/getTutoriasCalendar.php',
+        failure: function () {
+            alert('Hubo un error al cargar los eventos');
         }
-        ]
+        }
     });
 
     calendario.render();
-    
 });

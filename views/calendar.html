@@ -20,49 +20,50 @@
         <main class="container py-4">
             <h3 class="mb-4">Mi calendario</h3>
             <div id="calendario"></div>
-            
-            <!-- Modal de Calendario -->
-            <div class="modal fade" id="modalCalendar" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalContactoLabel">Tutoría Agendada</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label class="form-label">Correo del estudiante</label>
-                                <div class="form-control-plaintext" id="emailEstudiante">estudiante@ejemplo.com</div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Correo del tutor</label>
-                                <div class="form-control-plaintext" id="emailTutor">tutor@ejemplo.com</div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Fecha</label>
-                                <div class="form-control-plaintext" id="fecha">2025-07-22</div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Franja horaria</label>
-                                <div class="form-control-plaintext" id="franja">10:00 AM - 11:00 AM</div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Hora seleccionada</label>
-                                <div class="form-control-plaintext" id="horaSeleccionada">10:00 AM</div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Link de Sesión</label>
-                                <div class="form-control-plaintext" id="linksesion">
-                                    <a href="#" target="_blank">https://tutoria.com/sesion/123</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
+
+            <!-- Modal Informativo de Tutoría -->
+            <div class="modal fade" id="modalCalendar" tabindex="-1" aria-labelledby="modalCalendarLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCalendarLabel">Tutoría Agendada</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                    <label class="form-label">Correo del estudiante</label>
+                    <div class="form-control-plaintext" id="emailEstudiante">-</div>
+                    </div>
+                    <div class="mb-3">
+                    <label class="form-label">Correo del tutor</label>
+                    <div class="form-control-plaintext" id="emailTutor">-</div>
+                    </div>
+                    <div class="mb-3">
+                    <label class="form-label">Fecha</label>
+                    <div class="form-control-plaintext" id="fecha">-</div>
+                    </div>
+                    <div class="mb-3">
+                    <label class="form-label">Franja horaria</label>
+                    <div class="form-control-plaintext" id="franja">-</div>
+                    </div>
+                    <div class="mb-3">
+                    <label class="form-label">Hora seleccionada</label>
+                    <div class="form-control-plaintext" id="horaSeleccionada">-</div>
+                    </div>
+                    <div class="mb-3">
+                    <label class="form-label">Link de Sesión</label>
+                    <div class="form-control-plaintext" id="linksesion">
+                        <a href="#" target="_blank">-</a>
+                    </div>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
             </div>
+            </div>
+
 
         </main>
 

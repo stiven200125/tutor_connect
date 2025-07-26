@@ -8,10 +8,9 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['rol'])) {
 }
 
 $idSesion = $_SESSION['id'];
-$rol = $_SESSION['rol']; // Se espera 'tutor' o 'estudiante'
+$rol = $_SESSION['rol']; 
 
 try {
-    // Filtrar tutorías agendadas que correspondan al usuario activo
     $query = "
         SELECT 
             t.idTutoria,
@@ -19,26 +18,30 @@ try {
             t.asunto,
             t.descripcion,
             t.enlace_sesion,
-            fr.horaInicio,
-            fr.horaFin,
-            est.correo AS correoEstudiante,
-            tut.correo AS correoTutor,
-            est.nombre AS nombreEstudiante,
-            tut.nombre AS nombreTutor
+            fr.descripcion AS franjaDescripcion,
+            h.horaTutoria,
+            est.correo_electronico AS correoEstudiante,
+            tut.correo_electronico AS correoTutor,
+            CONCAT(est.nombre, ' ', est.apellido) AS nombreEstudiante,
+            CONCAT(tut.nombre, ' ', tut.apellido) AS nombreTutor
         FROM tutoria t
         INNER JOIN franja_horaria fr ON t.idFranja = fr.idFranja
-        INNER JOIN usuario est ON t.idEstudiante = est.idUsuario
-        INNER JOIN usuario tut ON t.idTutor = tut.idUsuario
+        INNER JOIN horario h ON t.idHorario = h.idHorario
+        INNER JOIN estudiante est ON t.idEstudiante = est.idEstudiante
+        INNER JOIN tutor tut ON t.idTutor = tut.idTutor
         WHERE t.enlace_sesion IS NOT NULL 
         AND t.enlace_sesion <> '' 
         AND t.idHorario IS NOT NULL 
         AND t.idHorario <> ''
     ";
 
-    if ($rol === 'tutor') {
+    if ((int)$rol === 2) {
         $query .= " AND t.idTutor = :idSesion";
-    } else {
+    } elseif ((int)$rol === 1) {
         $query .= " AND t.idEstudiante = :idSesion";
+    } else {
+        http_response_code(403);
+        exit('Rol no reconocido');
     }
 
     $stmt = $conexion->prepare($query);
@@ -48,21 +51,22 @@ try {
     $eventos = [];
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $horaInicio = $row['horaInicio'];
         $fecha = $row['fecha'];
-        $title = $row['asunto'] . ' - ' . ($rol === 'tutor' ? $row['nombreEstudiante'] : $row['nombreTutor']);
+        $hora = $row['horaTutoria'];
+        $title = $row['asunto'] . ' - ' . ((int)$rol === 2 ? $row['nombreEstudiante'] : $row['nombreTutor']);
 
         $eventos[] = [
             'id' => $row['idTutoria'],
             'title' => $title,
-            'start' => $fecha . 'T' . $horaInicio,
+            'start' => $fecha . 'T' . $hora,
+            'classNames' => ['evento-tutoria'],
             'extendedProps' => [
                 'descripcion' => $row['descripcion'],
                 'correoEstudiante' => $row['correoEstudiante'],
                 'correoTutor' => $row['correoTutor'],
-                'horaInicio' => $row['horaInicio'],
-                'horaFin' => $row['horaFin'],
                 'fecha' => $fecha,
+                'horaTutoria' => $hora,
+                'franja' => $row['franjaDescripcion'],
                 'enlaceSesion' => $row['enlace_sesion']
             ]
         ];
@@ -73,5 +77,5 @@ try {
 
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(['error' => 'Error en la base de datos: ' . $e->getMessage()]);
+    echo json_encode(['error' => 'Error en la base de datos']);
 }
